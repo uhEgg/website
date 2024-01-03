@@ -186,6 +186,12 @@
     </div>
 
     <script>
+        // Check if the device has a touchscreen or is a mobile device
+        if ('ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+            // If touchscreen, hide the cursor
+            document.getElementById('cursor').style.display = 'none';
+        }
+
         // Dynamic starry sky
         const starsContainer = document.querySelector('.stars');
         const maxStars = 75; // Maximum number of stars on the screen
