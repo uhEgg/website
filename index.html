@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome, dear Hacker!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #171633, #0d0e18); /* Dark purple-blue to black gradient */
+            overflow: hidden;
+            position: relative; /* Added relative positioning */
+            font-family: 'Noto Sans', sans-serif; /* Use the default font for the text */
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0; /* Ensuring stars are below other elements */
+        }
+
+        .star {
+            position: absolute;
+            width: 2px; /* Adjusted minimum star size */
+            height: 2px; /* Adjusted minimum star size */
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 5s infinite, fall linear infinite; /* Added twinkling and falling animations */
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-top: 70px; /* Adjusted margin-top to move 100px down */
+            z-index: 1; /* Ensuring the circular image is above stars */
+            transform-style: preserve-3d; /* Preserve 3D transformations */
+            transition: transform 0.3s; /* Smooth transition for image movement */
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 50%;
+            transform: translateZ(75px); /* Adjust the distance for more or less depth */
+        }
+
+        .club-name {
+            color: #fff; /* Text color */
+            margin-top: 10px; /* Adjusted margin-top to 10px */
+            text-align: center; /* Center-align the text */
+            font-size: 2em; /* Make the text 2x larger */
+            font-family: 'Space Grotesk', sans-serif; /* Use the new font for Hack Club @ OCSA */
+            z-index: 1; /* Ensuring the club name is above stars */
+        }
+
+        /* Style for the buttons with Noto Sans font */
+        .button-container {
+            margin-top: 20px; /* Adjusted margin-top for spacing */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* Added relative positioning */
+            z-index: 1; /* Ensuring the buttons are above stars */
+        }
+
+        .button {
+            font-family: 'Noto Sans', sans-serif; /* Use the Noto Sans font */
+            padding: 15px 75px; /* Equalized padding for equal button length */
+            margin: 15px 0; /* Adjusted margin for spacing between buttons */
+            background-color: #fff; /* White background color */
+            color: #000; /* Black text color */
+            border: none;
+            border-radius: 20px; /* Rounded corners */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s; /* Smooth transition for growth, shrink, and color change effects */
+        }
+
+        /* Button hover effect */
+        .button:hover {
+            transform: scale(1.1); /* Grow the button on hover */
+        }
+
+        .button a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            transition: background-color 0.3s; /* Smooth color transition for the cursor */
+        }
+
+        /* Dark gray color for cursor when hovering over a button */
+        #cursor.gray {
+            background-color: #333;
+        }
+
+        /* Twinkling animation for stars */
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Falling animation for stars */
+        @keyframes fall {
+            from {
+                transform: translateY(-10vh);
+            }
+            to {
+                transform: translateY(10vh);
+            }
+        }
+
+        /* Small text at the bottom */
+        .footer-text {
+            color: #fff;
+            font-family: 'Noto Sans', sans-serif; /* Use the same font as buttons */
+            font-size: 12px;
+            margin-top: 20px;
+            z-index: 1; /* Ensuring the footer text is above stars */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars">
+        <!-- Generate stars dynamically with JavaScript -->
+    </div>
+
+    <div class="profile-image" id="profileImage">
+        <img src="https://i.ibb.co/r6sTQy1/your-image.jpg" alt="Profile Image">
+    </div>
+
+    <div class="club-name">
+        <p>Jayden Kim</p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-container">
+        <button class="button"><a href="https://www.youtube.com/@jaydenkim" target="_blank">YouTube</a></button>
+        <button class="button"><a href="https://www.instagram.com/jaydxn.kim/" target="_blank">Instagram</a></button>
+        <button class="button"><a href="https://ocsa.hackclub.com" target="_blank">Join Hack Club @ OCSA!</a></button>
+    </div>
+
+    <!-- Custom cursor -->
+    <div id="cursor"></div>
+
+    <!-- Small text at the bottom -->
+    <div class="footer-text">
+        © 2024 by Jayden Kim
+    </div>
+
+    <script>
+        // Dynamic starry sky
+        const starsContainer = document.querySelector('.stars');
+        const maxStars = 75; // Maximum number of stars on the screen
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.width = Math.random() * 4 + 'px'; /* Varying star size */
+            star.style.height = star.style.width; /* Ensuring star maintains a circular shape */
+            starsContainer.appendChild(star);
+
+            // Check if the number of stars exceeds the maximum
+            const currentStars = document.querySelectorAll('.star');
+            if (currentStars.length > maxStars) {
+                starsContainer.removeChild(currentStars[0]); // Remove the oldest star
+            }
+        }
+
+        function updateStars() {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star) => {
+                const top = parseFloat(star.style.top);
+                star.style.top = (top + 1) % 100 + 'vh'; // Reduced speed for a graceful fall
+            });
+        }
+
+        setInterval(() => {
+            createStar();
+            updateStars();
+        }, 200); // Add new star every 0.2 seconds
+
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+
+            // Tilt effect for the profile image
+            const profileImage = document.getElementById('profileImage');
+            const imageX = (mouseX / window.innerWidth - 0.5) * 100;
+            const imageY = (mouseY / window.innerHeight - 0.5) * 100;
+            profileImage.style.transform = `
+                rotateX(${imageY}deg)
+                rotateY(${imageX}deg)
+            `;
+        });
+
+        // Button hover effect for cursor
+        const buttons = document.querySelectorAll('.button');
+
+        buttons.forEach((button) => {
+            button.addEventListener('mouseover', () => {
+                cursor.classList.add('gray');
+            });
+
+            button.addEventListener('mouseout', () => {
+                cursor.classList.remove('gray');
+            });
+        });
+
+        // Circular image hover effect for cursor
+        const circularImage = document.getElementById('profileImage');
+
+        circularImage.addEventListener('mouseover', () => {
+            cursor.classList.add('gray');
+        });
+
+        circularImage.addEventListener('mouseout', () => {
+            cursor.classList.remove('gray');
+        });
+    </script>
+</body>
+</html>
