@@ -232,13 +232,15 @@
         document.addEventListener('mousemove', (e) => {
             const mouseX = e.clientX;
             const mouseY = e.clientY;
-            cursor.style.left = mouseX + 'px';
-            cursor.style.top = mouseY + 'px';
+            const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            cursor.style.left = mouseX + scrollX + 'px';
+            cursor.style.top = mouseY + scrollY + 'px';
 
             // Tilt effect for the profile image
             const profileImage = document.getElementById('profileImage');
-            const imageX = (mouseX / window.innerWidth - 0.5) * 100;
-            const imageY = (mouseY / window.innerHeight - 0.5) * 100;
+            const imageX = ((mouseX + scrollX) / window.innerWidth - 0.5) * 100;
+            const imageY = ((mouseY + scrollY) / window.innerHeight - 0.5) * 100;
             profileImage.style.transform = `
                 rotateX(${imageY}deg)
                 rotateY(${imageX}deg)
