@@ -228,14 +228,14 @@
 
         // Custom cursor
         const cursor = document.getElementById('cursor');
-
+        
         document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
-            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-            cursor.style.left = mouseX + scrollX + 'px';
-            cursor.style.top = mouseY + scrollY + 'px';
+            const x = e.clientX + window.pageXOffset;
+            const y = e.clientY + window.pageYOffset;
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+        });
+
 
             // Tilt effect for the profile image
             const profileImage = document.getElementById('profileImage');
