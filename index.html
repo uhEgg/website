@@ -11,8 +11,9 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #f0f0f5, #ffffff);
-      color: #000;
+      background: url('https://raw.githubusercontent.com/uhEgg/website/ff121da3a2dcb5a71ec27106e80da7ffe990947b/dark_gray_based_frosted_gradient_glass_background_for.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
@@ -60,8 +61,8 @@
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: #111;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -69,16 +70,16 @@
     .home .pronouns {
       font-size: 1rem;
       font-weight: 300;
-      color: #888;
+      color: #ccc;
     }
     .home .tagline {
       font-size: 1rem;
       font-weight: 300;
-      color: #888;
+      color: #ccc;
       margin-bottom: 3rem;
     }
 
-    /* Buttons with bubble liquid glass look */
+    /* Buttons with enhanced frosted bubble effect */
     .home .buttons {
       display: flex;
       gap: 2rem;
@@ -89,15 +90,15 @@
       padding: 1rem 2rem;
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.4);
-      background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
-      backdrop-filter: blur(18px);
-      color: #000;
+      background: linear-gradient(145deg, rgba(255,255,255,0.35), rgba(255,255,255,0.1));
+      backdrop-filter: blur(20px);
+      color: #fff;
       font-weight: 500;
       font-size: 1rem;
       transition: all 0.3s ease;
       box-shadow: 
-        0 4px 10px rgba(0,0,0,0.05),
-        inset 0 1px 0 rgba(255,255,255,0.4),
+        0 6px 15px rgba(0,0,0,0.1),
+        inset 0 1px 2px rgba(255,255,255,0.3),
         inset 0 -1px 2px rgba(0,0,0,0.05);
       position: relative;
       overflow: hidden;
@@ -107,8 +108,8 @@
       position:absolute;
       top:0; left:0; right:0; bottom:0;
       border-radius: 16px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%);
-      opacity:0.2;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 60%);
+      opacity:0.25;
       pointer-events:none;
       z-index:1;
     }
@@ -117,17 +118,17 @@
       position:absolute;
       top:0; left:0; right:0; bottom:0;
       border-radius: 16px;
-      background: radial-gradient(circle at 70% 70%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%);
-      opacity:0.15;
+      background: radial-gradient(circle at 70% 70%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 60%);
+      opacity:0.2;
       pointer-events:none;
       z-index:2;
     }
     .home .buttons a:hover {
-      background: linear-gradient(145deg, rgba(255,255,255,0.35), rgba(255,255,255,0.15));
+      background: linear-gradient(145deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15));
       transform: translateY(-5px) scale(1.05);
       box-shadow: 
-        0 10px 20px rgba(0,0,0,0.1),
-        inset 0 1px 0 rgba(255,255,255,0.4),
+        0 12px 25px rgba(0,0,0,0.15),
+        inset 0 1px 2px rgba(255,255,255,0.35),
         inset 0 -1px 2px rgba(0,0,0,0.05);
     }
 
@@ -156,12 +157,12 @@
   <section class="home">
     <img class="profile-pic" src="https://raw.githubusercontent.com/uhEgg/website/8530e3a3d7d16600b2cf0d8010c40ad6b53a9276/IMG_1219.jpeg" alt="Jayden Kim">
     <h1>Jayden Kim <span class="pronouns">(he/him)</span></h1>
-    <div class="tagline">sic itur ad astra</div>
+    <div class="tagline">Sic itur ad astra</div>
     <div class="buttons">
-      <a href="https://www.instagram.com/namuorg/">Namu</a>
-      <a href="https://www.linkedin.com/in/jaydenhkim/">LinkedIn</a>
-      <a href="https://www.instagram.com/jaydenkim_official/">Instagram</a>
-      <a href="https://www.youtube.com/@jaydenkim">YouTube</a>
+      <a href="https://www.instagram.com/namuorg/" target="_blank" rel="noopener noreferrer">Namu</a>
+      <a href="https://www.linkedin.com/in/jaydenhkim/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.instagram.com/jaydenkim_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.youtube.com/@jaydenkim" target="_blank" rel="noopener noreferrer">YouTube</a>
     </div>
   </section>
 
