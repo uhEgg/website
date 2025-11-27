@@ -1,275 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jayden kim | home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #171633, #0d0e18); /* Dark purple-blue to black gradient */
-            /* overflow: hidden; Remove this line to enable scrolling */
-            position: relative; /* Added relative positioning */
-            font-family: 'Noto Sans', sans-serif; /* Use the default font for the text */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jayden Kim | jayden.kim</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/uhEgg/website/8530e3a3d7d16600b2cf0d8010c40ad6b53a9276/IMG_1219.jpeg" type="image/jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #f0f0f5, #ffffff);
+      color: #000;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
 
-        header {
-            padding: 20px;
-            text-align: center;
-        }
+    /* Noise texture overlay */
+    .noise {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AApEB+vgh8nEAAAAASUVORK5CYII=');
+      opacity: 0.05;
+      z-index: 1;
+    }
 
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0; /* Ensuring stars are below other elements */
-        }
+    /* Home Section */
+    .home {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .home .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+      object-fit: cover;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .home .profile-pic:hover {
+      transform: scale(1.05);
+    }
+    .home h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #111;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .home .pronouns {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #888;
+    }
+    .home .tagline {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #888;
+      margin-bottom: 3rem;
+    }
 
-        .star {
-            position: absolute;
-            width: 2px; /* Adjusted minimum star size */
-            height: 2px; /* Adjusted minimum star size */
-            background-color: #fff;
-            border-radius: 50%;
-            animation: twinkle 5s infinite, fall linear infinite; /* Added twinkling and falling animations */
-        }
+    /* Buttons with bubble liquid glass look */
+    .home .buttons {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .home .buttons a {
+      padding: 1rem 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+      backdrop-filter: blur(18px);
+      color: #000;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 
+        0 4px 10px rgba(0,0,0,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        inset 0 -1px 2px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .home .buttons a::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%);
+      opacity:0.2;
+      pointer-events:none;
+      z-index:1;
+    }
+    .home .buttons a::after {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      border-radius: 16px;
+      background: radial-gradient(circle at 70% 70%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%);
+      opacity:0.15;
+      pointer-events:none;
+      z-index:2;
+    }
+    .home .buttons a:hover {
+      background: linear-gradient(145deg, rgba(255,255,255,0.35), rgba(255,255,255,0.15));
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 
+        0 10px 20px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        inset 0 -1px 2px rgba(0,0,0,0.05);
+    }
 
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            overflow: hidden;
-            border-radius: 50%;
-            margin-top: 70px; /* Adjusted margin-top to move 100px down */
-            z-index: 1; /* Ensuring the circular image is above stars */
-            transform-style: preserve-3d; /* Preserve 3D transformations */
-            transition: transform 0.3s; /* Smooth transition for image movement */
-        }
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .home h1 { font-size: 3.5rem; }
+      .home .buttons a { padding: 0.8rem 1.5rem; }
+    }
+    @media (max-width: 768px) {
+      .home h1 { font-size: 3rem; flex-direction: column; gap: 0.3rem; }
+      .home .buttons { gap: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .home h1 { font-size: 2.5rem; flex-direction: column; gap: 0.2rem; }
+      .home .buttons a { padding: 0.6rem 1rem; font-size: 0.9rem; }
+    }
 
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 50%;
-            transform: translateZ(75px); /* Adjust the distance for more or less depth */
-        }
-
-        .club-name {
-            color: #fff; /* Text color */
-            margin-top: 10px; /* Adjusted margin-top to 10px */
-            text-align: center; /* Center-align the text */
-            font-size: 2em; /* Make the text 2x larger */
-            font-family: 'Space Grotesk', sans-serif; /* Use the new font for Hack Club @ OCSA */
-            z-index: 1; /* Ensuring the club name is above stars */
-        }
-
-        /* Style for the buttons with Noto Sans font */
-        .button-container {
-            margin-top: 20px; /* Adjusted margin-top for spacing */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative; /* Added relative positioning */
-            z-index: 1; /* Ensuring the buttons are above stars */
-        }
-
-        .button {
-            font-family: 'Noto Sans', sans-serif; /* Use the Noto Sans font */
-            padding: 15px 75px; /* Equalized padding for equal button length */
-            margin: 15px 0; /* Adjusted margin for spacing between buttons */
-            background-color: #fff; /* White background color */
-            color: #000; /* Black text color */
-            border: none;
-            border-radius: 20px; /* Rounded corners */
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-            transition: transform 0.3s; /* Smooth transition for growth, shrink, and color change effects */
-        }
-
-        /* Button hover effect */
-        .button:hover {
-            transform: scale(1.1); /* Grow the button on hover */
-        }
-
-        .button a {
-            color: #000;
-            text-decoration: none;
-        }
-
-        #cursor {
-            width: 20px;
-            height: 20px;
-            background-color: #fff;
-            border-radius: 50%;
-            position: absolute;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            transition: background-color 0.3s; /* Smooth color transition for the cursor */
-        }
-
-        /* Dark gray color for cursor when hovering over a button */
-        #cursor.gray {
-            background-color: #333;
-        }
-
-        /* Twinkling animation for stars */
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        /* Falling animation for stars */
-        @keyframes fall {
-            from {
-                transform: translateY(-10vh);
-            }
-            to {
-                transform: translateY(10vh);
-            }
-        }
-
-        /* Small text at the bottom */
-        .footer-text {
-            color: #fff;
-            font-family: 'Noto Sans', sans-serif; /* Use the same font as buttons */
-            font-size: 12px;
-            margin-top: 20px;
-            z-index: 1; /* Ensuring the footer text is above stars */
-        }
-    </style>
+  </style>
 </head>
 <body>
 
-    <div class="stars">
-        <!-- Generate stars dynamically with JavaScript -->
+  <!-- Global noise -->
+  <div class="noise"></div>
+
+  <!-- Home Section -->
+  <section class="home">
+    <img class="profile-pic" src="https://raw.githubusercontent.com/uhEgg/website/8530e3a3d7d16600b2cf0d8010c40ad6b53a9276/IMG_1219.jpeg" alt="Jayden Kim">
+    <h1>Jayden Kim <span class="pronouns">(he/him)</span></h1>
+    <div class="tagline">sic itur ad astra</div>
+    <div class="buttons">
+      <a href="https://www.instagram.com/namuorg/">Namu</a>
+      <a href="https://www.linkedin.com/in/jaydenhkim/">LinkedIn</a>
+      <a href="https://www.instagram.com/jaydenkim_official/">Instagram</a>
+      <a href="https://www.youtube.com/@jaydenkim">YouTube</a>
     </div>
+  </section>
 
-    <div class="profile-image" id="profileImage">
-        <img src="https://i.ibb.co/r6sTQy1/your-image.jpg" alt="Profile Image">
-    </div>
-
-    <div class="club-name">
-        <p>jayden kim :)</p>
-    </div>
-
-    <!-- Buttons -->
-    <div class="button-container">
-        <button class="button"><a href="https://www.youtube.com/@jaydenkim" target="_blank">YouTube</a></button>
-        <button class="button"><a href="https://www.instagram.com/jaydxn.kim/" target="_blank">Instagram</a></button>
-        <button class="button"><a href="https://www.thenamu.org/" target="_blank">Namu</a></button>
-        <button class="button"><a href="https://ocsa.hackclub.com/" target="_blank">OCSA Hack Club</a></button>
-    </div>
-
-    <!-- Custom cursor -->
-    <div id="cursor"></div>
-
-    <!-- Small text at the bottom -->
-    <div class="footer-text">
-        © 2024 by Jayden Kim
-    </div>
-
-    <script>
-        // Check if the device has a touchscreen or is a mobile device
-        if ('ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-            // If touchscreen, hide the cursor
-            document.getElementById('cursor').style.display = 'none';
-        }
-
-        // Dynamic starry sky
-        const starsContainer = document.querySelector('.stars');
-        const maxStars = 75; // Maximum number of stars on the screen
-
-        function createStar() {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.width = Math.random() * 4 + 'px'; /* Varying star size */
-            star.style.height = star.style.width; /* Ensuring star maintains a circular shape */
-            starsContainer.appendChild(star);
-
-            // Check if the number of stars exceeds the maximum
-            const currentStars = document.querySelectorAll('.star');
-            if (currentStars.length > maxStars) {
-                starsContainer.removeChild(currentStars[0]); // Remove the oldest star
-            }
-        }
-
-        function updateStars() {
-            const stars = document.querySelectorAll('.star');
-            stars.forEach((star) => {
-                const top = parseFloat(star.style.top);
-                star.style.top = (top + 1) % 100 + 'vh'; // Reduced speed for a graceful fall
-            });
-        }
-
-        setInterval(() => {
-            createStar();
-            updateStars();
-        }, 200); // Add new star every 0.2 seconds
-
-        // Custom cursor
-        const cursor = document.getElementById('cursor');
-
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
-            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-            cursor.style.left = mouseX + scrollX + 'px';
-            cursor.style.top = mouseY + scrollY + 'px';
-
-            // Tilt effect for the profile image
-            const profileImage = document.getElementById('profileImage');
-            const imageX = ((mouseX + scrollX) / window.innerWidth - 0.5) * 100;
-            const imageY = ((mouseY + scrollY) / window.innerHeight - 0.5) * 100;
-            profileImage.style.transform = `
-                rotateX(${imageY}deg)
-                rotateY(${imageX}deg)
-            `;
-        });
-
-        // Button hover effect for cursor
-        const buttons = document.querySelectorAll('.button');
-
-        buttons.forEach((button) => {
-            button.addEventListener('mouseover', () => {
-                cursor.classList.add('gray');
-            });
-
-            button.addEventListener('mouseout', () => {
-                cursor.classList.remove('gray');
-            });
-        });
-
-        // Circular image hover effect for cursor
-        const circularImage = document.getElementById('profileImage');
-
-        circularImage.addEventListener('mouseover', () => {
-            cursor.classList.add('gray');
-        });
-
-        circularImage.addEventListener('mouseout', () => {
-            cursor.classList.remove('gray');
-        });
-    </script>
 </body>
 </html>
